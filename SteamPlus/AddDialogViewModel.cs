@@ -1,4 +1,4 @@
-﻿namespace SteamPlus
+namespace SteamPlus
 {
     public class AddDialogViewModel : AddDialogModel
     {
@@ -16,7 +16,6 @@
             {
                 name = value;
                 OnPropertyChanged("Name");
-                SwitchEnableAddGameButton(value);
             }
         }
 
@@ -40,7 +39,8 @@
                   (addGameCommand = new Command(obj =>
                   {
                       AddGameDialog.Instance.SetDialogResult(true);
-                  }));
+                  },
+                  (can) => CanAddGame(name)));
             }
         }
     }
