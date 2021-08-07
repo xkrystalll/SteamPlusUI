@@ -3,8 +3,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Windows;
 
 namespace SteamPlus
 {
@@ -20,18 +18,24 @@ namespace SteamPlus
             }
             return null;
         }
-        public void TryEnableRunGameButton(string selectedGame, string Path)
+
+        protected bool CheckPath(string path)
         {
-            if (selectedGame != "Не выбрано" && !string.IsNullOrEmpty(Path))
-                if (Path.EndsWith("steam.exe"))
-                    MainWindow.Instance.runGame.IsEnabled = true;
+            if (string.IsNullOrEmpty(path))
+                return false;
+            if (!path.Contains("steam.exe"))
+                return false;
+
+            return true;
         }
 
         public static string GetPath()
         {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Executable documents (*.exe)|*.exe";
-            dialog.FilterIndex = 2;
+            OpenFileDialog dialog = new OpenFileDialog
+            {
+                Filter = "Steam exe file (steam.exe)|steam.exe",
+                FilterIndex = 2
+            };
 
             bool? result = dialog.ShowDialog();
 
