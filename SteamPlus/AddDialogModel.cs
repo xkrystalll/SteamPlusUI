@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace SteamPlus
@@ -12,14 +12,6 @@ namespace SteamPlus
             if (string.IsNullOrEmpty(appID))
                 return false;
             return true;
-        }
-
-        public void SwitchEnableAddGameButton(string s)
-        {
-            if (CanAddGame(s))
-                AddGameDialog.Instance.AddGame.IsEnabled = true;
-            else
-                AddGameDialog.Instance.AddGame.IsEnabled = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
