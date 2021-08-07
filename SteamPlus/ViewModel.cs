@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace SteamPlus
@@ -13,6 +13,7 @@ namespace SteamPlus
         private Command selectPathCommand;
         private Command addCommand;
         private Command runGameCommand;
+
         public Command RunGameCommand
         {
             get
@@ -21,7 +22,8 @@ namespace SteamPlus
                   (runGameCommand = new Command(obj =>
                   {
                       RunGame(selectedGame);
-                  }));
+                  },
+                  (can) => CheckPath(path) && !string.IsNullOrEmpty(selectedGame) && selectedGame != "Не выбрано"));
             }
         }
 
@@ -57,7 +59,6 @@ namespace SteamPlus
             {
                 path = value;
                 OnPropertyChanged("Path");
-                TryEnableRunGameButton(selectedGame, path);
             }
         }
 
@@ -68,7 +69,6 @@ namespace SteamPlus
             {
                 selectedGame = value;
                 OnPropertyChanged("SelectedGame");
-                TryEnableRunGameButton(selectedGame, path);
             }
         }
 
