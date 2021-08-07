@@ -1,4 +1,4 @@
-﻿<Window x:Class="SteamPlus.MainWindow"
+<Window x:Class="SteamPlus.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ComboBox x:Name="gamesBox" HorizontalAlignment="Left" Height="25.093" Margin="10,10,0,0" VerticalAlignment="Top" Width="198.454" ItemsSource="{Binding Games}" SelectedItem="{Binding SelectedGame}"/>
-        <Button Command="{Binding RunGameCommand}" x:Name="runGame" IsEnabled="false" Content="Запустить игру" HorizontalAlignment="Left" Height="51.242" Margin="10,357.758,0,0" VerticalAlignment="Top" Width="198.454" FontSize="20"/>
+        <ComboBox HorizontalAlignment="Left" Height="25.093" Margin="10,10,0,0" VerticalAlignment="Top" Width="198.454" ItemsSource="{Binding Games}" SelectedItem="{Binding SelectedGame}"/>
+        <Button Command="{Binding RunGameCommand}" Content="Запустить игру" HorizontalAlignment="Left" Height="51.242" Margin="10,357.758,0,0" VerticalAlignment="Top" Width="198.454" FontSize="20"/>
         <Button Command="{Binding AddCommand}" Content="Добавить игру" HorizontalAlignment="Left" Height="51.242" Margin="213.454,357.758,0,0" VerticalAlignment="Top" Width="198.454" FontSize="20"/>
         <Button Command="{Binding SelectPathCommand}" Content="Выбрать путь к Steam" HorizontalAlignment="Left" Height="51.242" Margin="603.249,357.758,0,0" VerticalAlignment="Top" Width="178.751" FontSize="17"/>
         <TextBlock HorizontalAlignment="Left" Height="21.766" Margin="603.249,330.992,0,0" TextWrapping="Wrap" Text="{Binding Path, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="178.751"/>
