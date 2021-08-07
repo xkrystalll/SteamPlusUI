@@ -1,7 +1,10 @@
-﻿using Microsoft.Win32;
+using Microsoft.Win32;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Windows;
 
 namespace SteamPlus
 {
@@ -41,7 +44,7 @@ namespace SteamPlus
         private void KillSteam()
         {
             Process[] etc = Process.GetProcesses();
-            foreach (Process anti in etc)
+            foreach (Process anti in etc.ToList().Where(x => !x.ProcessName.ToLower().Contains("plus")))
             {
                 if (anti.ProcessName.ToLower().Contains("steam"))
                 {
